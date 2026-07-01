@@ -1,0 +1,38 @@
+{
+	"name": "nicw/woocommerce-business-id",
+	"description": "Adds configurable business ID fields to WooCommerce settings, displays them in emails, and provides a template helper for custom placements.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=8.0"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"php-stubs/woocommerce-stubs": "^8.9",
+		"php-stubs/wordpress-stubs": "^6.4",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpstan/phpstan": "^2.1",
+		"phpunit/phpunit": "^9.6",
+		"szepeviktor/phpstan-wordpress": "^2.0",
+		"woocommerce/woocommerce-sniffs": "^1.0",
+		"wp-coding-standards/wpcs": "^3.0"
+	},
+	"scripts": {
+		"phpcs": "phpcs",
+		"phpcbf": "phpcbf",
+		"phpstan": "phpstan analyse --memory-limit=1G --debug",
+		"test": "phpunit",
+		"build:zip": "bash scripts/build-release-zip.sh",
+		"quality": [
+			"@phpcs",
+			"@phpstan",
+			"@test"
+		]
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"sort-packages": true
+	}
+}

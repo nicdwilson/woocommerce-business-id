@@ -46,3 +46,11 @@ wp-config.php
 # Note: If you wish to whitelist themes,
 # uncomment the next line
 #/wp-content/themes
+
+# Development dependencies and generated reports.
+/vendor/
+/node_modules/
+/coverage/
+/.phpunit.result.cache
+/.phpunit.cache/
+/dist/

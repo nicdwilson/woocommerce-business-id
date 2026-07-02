@@ -171,7 +171,7 @@ class Business_ID_Renderer_Test extends TestCase {
 	/**
 	 * Verify the footer placeholder token is replaced in place with HTML output.
 	 *
-	 * @since 0.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -200,7 +200,7 @@ class Business_ID_Renderer_Test extends TestCase {
 	/**
 	 * Verify the footer placeholder token is replaced with plain-text output.
 	 *
-	 * @since 0.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -216,7 +216,7 @@ class Business_ID_Renderer_Test extends TestCase {
 	/**
 	 * Verify the placeholder token is removed when the Business ID is blank.
 	 *
-	 * @since 0.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -232,7 +232,7 @@ class Business_ID_Renderer_Test extends TestCase {
 	/**
 	 * Verify every occurrence of the placeholder token is replaced.
 	 *
-	 * @since 0.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -248,7 +248,7 @@ class Business_ID_Renderer_Test extends TestCase {
 	/**
 	 * Verify footer text without the token still appends the Business ID line.
 	 *
-	 * @since 0.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */

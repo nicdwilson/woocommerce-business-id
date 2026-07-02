@@ -3,7 +3,7 @@
  * Plugin Name:       WooCommerce Business ID
  * Plugin URI:        https://github.com/nicw/woocommerce-business-id
  * Description:       Adds configurable business ID fields to WooCommerce settings, displays them in emails, and provides a template helper for custom placements.
- * Version:           0.1.0
+ * Version:           1.0.0
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Requires Plugins:  woocommerce
@@ -19,7 +19,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WOOCOMMERCE_BUSINESS_ID_VERSION', '0.1.0' );
+define( 'WOOCOMMERCE_BUSINESS_ID_VERSION', '1.0.0' );
 define( 'WOOCOMMERCE_BUSINESS_ID_FILE', __FILE__ );
 define( 'WOOCOMMERCE_BUSINESS_ID_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WOOCOMMERCE_BUSINESS_ID_URL', plugin_dir_url( __FILE__ ) );

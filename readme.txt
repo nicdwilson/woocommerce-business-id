@@ -5,7 +5,7 @@ Requires at least: 6.4
 Tested up to: 6.6
 Requires PHP: 8.0
 Requires Plugins: woocommerce
-Stable tag: 0.1.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,8 @@ WooCommerce Business ID adds jurisdiction-neutral Business ID fields to WooComme
 Merchants can set a Business ID description, such as `ABN`, `VAT ID`, or `GST number`, and a Business ID value, such as `51 824 753 556`. When the Business ID is present, WooCommerce emails include the value in this format:
 
 `ABN: 51 824 753 556`
+
+By default the line is appended to the email footer. To control where it appears, add the `{business_id}` token to WooCommerce > Settings > Emails > Footer text. The token is replaced with the formatted Business ID line (HTML or plain text to match the email). When the token is present it is used in place and the line is not also appended; when the Business ID is blank the token is removed.
 
 == Template helper ==
 
@@ -56,6 +58,14 @@ Get plain-text output for advanced use:
 No. Version 1 sanitizes the stored values for safe output but does not validate jurisdiction-specific identifier rules.
 
 == Changelog ==
+
+= 1.0.0 =
+
+* Initial stable release.
+* Add configurable Business ID and Business ID description fields to WooCommerce > Settings > General.
+* Display the Business ID in outgoing HTML and plain-text WooCommerce emails.
+* Add a `{business_id}` footer text token so merchants can control placement in the email footer.
+* Provide a public template helper (`woocommerce_business_id_output()` and related) for custom placements.
 
 = 0.1.0 =
 

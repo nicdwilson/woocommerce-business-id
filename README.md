@@ -28,6 +28,16 @@ When the Business ID is present, outgoing WooCommerce emails include it in this 
 ABN: 51 824 753 556
 ```
 
+By default the line is appended to the email footer. To control where it appears,
+add the `{business_id}` token to `WooCommerce > Settings > Emails > Footer text`.
+The token is replaced with the formatted Business ID line (HTML or plain text to
+match the email). If the token is present it is used in place and the line is not
+also appended; if the Business ID is blank the token is removed.
+
+```text
+Thanks for shopping with us. {business_id}
+```
+
 ## Template helper
 
 The plugin provides a public helper callback so themes and custom templates can place the configured business ID wherever a WordPress or WooCommerce action runs.

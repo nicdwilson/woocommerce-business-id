@@ -34,6 +34,17 @@ final class Business_ID_Renderer {
 	public const FORMAT_PLAIN_TEXT = 'plain_text';
 
 	/**
+	 * Footer text placeholder token replaced with the rendered Business ID.
+	 *
+	 * Merchants may type this token into the WooCommerce email footer text to
+	 * control where the Business ID line appears, similar to WooCommerce's own
+	 * `{site_title}` and `{site_address}` tokens.
+	 *
+	 * @var string
+	 */
+	public const FOOTER_PLACEHOLDER = '{business_id}';
+
+	/**
 	 * Business ID option name.
 	 *
 	 * @var string
@@ -104,6 +115,11 @@ final class Business_ID_Renderer {
 	 * Current plain-text templates call the filter without passing the email object,
 	 * so a missing email object is treated as plain-text output.
 	 *
+	 * If the footer text contains the {@see self::FOOTER_PLACEHOLDER} token, the
+	 * token is replaced in place so merchants control where the Business ID line
+	 * appears. When the token is absent, the line is appended after the existing
+	 * footer text, preserving the default behavior.
+	 *
 	 * @since 0.1.0
 	 *
 	 * @param mixed $footer_text Existing footer text.
@@ -114,6 +130,10 @@ final class Business_ID_Renderer {
 	public function append_to_footer_text( mixed $footer_text, mixed $email = null ): string {
 		$footer_text = \is_scalar( $footer_text ) ? (string) $footer_text : '';
 		$output      = $this->render( $this->get_format_for_email( $email ) );
+
+		if ( \str_contains( $footer_text, self::FOOTER_PLACEHOLDER ) ) {
+			return \str_replace( self::FOOTER_PLACEHOLDER, $output, $footer_text );
+		}
 
 		if ( '' === $output ) {
 			return $footer_text;

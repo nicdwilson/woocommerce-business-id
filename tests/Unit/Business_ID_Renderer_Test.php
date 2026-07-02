@@ -169,6 +169,99 @@ class Business_ID_Renderer_Test extends TestCase {
 	}
 
 	/**
+	 * Verify the footer placeholder token is replaced in place with HTML output.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @return void
+	 */
+	public function test_append_to_footer_text_replaces_placeholder_token_with_html(): void {
+		$this->set_business_id_options( 'ABN', '51 824 753 556' );
+		$email = new class() {
+			/**
+			 * Get the test email type.
+			 *
+			 * @return string
+			 */
+			public function get_email_type(): string {
+				return 'html';
+			}
+		};
+
+		$this->assertSame(
+			'Before ' . '<p class="woocommerce-business-id">ABN: 51 824 753 556</p>' . ' after',
+			( new Business_ID_Renderer() )->append_to_footer_text(
+				'Before {business_id} after',
+				$email
+			)
+		);
+	}
+
+	/**
+	 * Verify the footer placeholder token is replaced with plain-text output.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @return void
+	 */
+	public function test_append_to_footer_text_replaces_placeholder_token_with_plain_text(): void {
+		$this->set_business_id_options( 'ABN', '51 824 753 556' );
+
+		$this->assertSame(
+			'Before ABN: 51 824 753 556 after',
+			( new Business_ID_Renderer() )->append_to_footer_text( 'Before {business_id} after' )
+		);
+	}
+
+	/**
+	 * Verify the placeholder token is removed when the Business ID is blank.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @return void
+	 */
+	public function test_append_to_footer_text_removes_placeholder_token_when_business_id_is_blank(): void {
+		$this->set_business_id_options( 'ABN', '' );
+
+		$this->assertSame(
+			'Before  after',
+			( new Business_ID_Renderer() )->append_to_footer_text( 'Before {business_id} after' )
+		);
+	}
+
+	/**
+	 * Verify every occurrence of the placeholder token is replaced.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @return void
+	 */
+	public function test_append_to_footer_text_replaces_all_placeholder_tokens(): void {
+		$this->set_business_id_options( 'ABN', '51 824 753 556' );
+
+		$this->assertSame(
+			'ABN: 51 824 753 556 | ABN: 51 824 753 556',
+			( new Business_ID_Renderer() )->append_to_footer_text( '{business_id} | {business_id}' )
+		);
+	}
+
+	/**
+	 * Verify footer text without the token still appends the Business ID line.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @return void
+	 */
+	public function test_append_to_footer_text_appends_when_token_is_absent(): void {
+		$this->set_business_id_options( 'ABN', '51 824 753 556' );
+
+		$this->assertSame(
+			'Footer text' . "\n\n" . 'ABN: 51 824 753 556',
+			( new Business_ID_Renderer() )->append_to_footer_text( 'Footer text' )
+		);
+	}
+
+	/**
 	 * Set Business ID options in the unit test option shim.
 	 *
 	 * @since 0.1.0

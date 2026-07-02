@@ -7,7 +7,7 @@ Build a small WooCommerce extension that lets a merchant store their business id
 The fields are jurisdiction-neutral. In Australia the description may be `ABN`; in other regions it may be `VAT ID`, `GST number`, `Tax registration number`, `Company registration number`, `EIN`, or another locally required label.
 
 ## Scope
-go o
+
 ### In scope
 
 - Add two merchant-facing settings to `WooCommerce > Settings > General`.
